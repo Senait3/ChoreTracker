@@ -27,16 +27,24 @@ public Kid() {
 	// TODO Auto-generated constructor stub
 }
 
-public void doing() {
-	//Task.completed();
+
+
+
+public static void doing() {
+	boolean kiddoes = true;
+	while(kiddoes) {
 	System.out.println("HI");
 	String hi = input.nextLine();
 	if(hi.equals("1")){
-		this.checkBalance();
+		Task.pTask();
 	}
 	else if(hi.equals("2")) {
-		this.quantity();;
+		//this.quantity();;
 			}
+	else if(hi.equals("3")) {
+		System.out.println(kid);
+	}
+	}
 }
 
 //public 

@@ -1,10 +1,7 @@
-import java.util.*;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.io.Serializable;
+import java.util.*;
+import java.util.ArrayList; 
 
 public class Parent extends Allowance implements Serializable{
 //String FamilyName;
@@ -12,7 +9,7 @@ public class Parent extends Allowance implements Serializable{
 	static String childName = "";
 	int pin = 0;
 	Allowance allowance;
-	ArrayList<Task> task = new ArrayList<Task>();
+	static ArrayList<Task> task = new ArrayList<Task>();
 	//protected Kid kid;
 	static ArrayList<String> kid = new ArrayList <String>();
 	static ArrayList<String> parent = new ArrayList<String>();
@@ -76,27 +73,42 @@ public static void mom(){
 
 
 public  static void play(){
-	System.out.println("+-----------------------------+\n"
-					+  "|       Hello Parent!         |\n"
-					+  "|  Please make a selection!   |\n"
-					+  "|1.) Add a child              |\n"
-					+  "|2.) Add a task               |\n"
-					+  "|3.) View completed tasks     |\n"
-					+  "|4.) Give Allowance           |\n"
-					+  "|5.) Take allowance           |\n"
-					+  "|6.) Go to messaging          |\n"
-					+  "|7.) Quit 					  |\n"
-					+  "+-----------------------------+");
-	String in = input.nextLine();
-	if(in.equals("1")) {
-		System.out.println("Enter your childs name: ");
-		String kidName = input.nextLine();
-		childName =  kidName;
-		System.out.printf("Succesfully added: "+kidName , kid.add(kidName));
-		System.out.print(kid);
+	System.out.println("Hello! To get started please type in the name of your child: ");
+	String name = input.nextLine();
+	if(kid.contains(name)) {
+		System.out.printf("It seems like you've already added that child before\n"+"If thats the case then you can start assigning them tasks\n"
+					+"If not then try adding a different child");
+		}
+		else {
+			System.out.printf("Succesfully added: "+name);
+			kid.add(name);
+		}//end else
+	boolean ins =true;
+		while(ins){
+		System.out.println(
+						"\n"
+						+"+-----------------------------+\n"
+						+"|       Hello Parent!         |\n"
+						+"|  Please make a selection!   |\n"
+						+"|1.) Add a task               |\n"
+						+"|2.) View completed tasks     |\n"
+						+"|3.) Give Allowance           |\n"
+						+"|4.) Take allowance           |\n"
+						+"|5.) Go to messaging          |\n"
+						+"|6.) Quit                     |\n"
+						+"+-----------------------------+");
+		String in = input.nextLine();
+		if(in.equals("2")) {
+			System.out.print("Which child did you want to assign a task to?\n"+(kid));
+			for (int i = 0; i < i; i++) {
+				System.out.println(i+"\n");
+			}
+		}
+		else if(in.equals("3")) {
+			Parent.quantity();
+			
+			//Task.due();
+		}
+		}	
 	}
-	else if(in.equals("2")) {
-		//Allowance.quantity();
-	}
-}
 }

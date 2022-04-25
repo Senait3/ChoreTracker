@@ -3,13 +3,14 @@ import java.io.Serializable;
 
 
 public class Allowance implements Serializable{
-protected   double money;
+protected static  double money;
+protected static double amount;
 static Scanner input = new Scanner(System.in);
 
 
 
 public Allowance(double money, double Aamount) {
-	this.money = 0.00;
+	this.money = money;
 }
 
 
@@ -31,34 +32,33 @@ public Allowance() {
 
 */ 
 
-	public double quantity() {
+	public static void quantity() {
 		System.out.println("How much would you like to give for allowance today: $");
 		double amount =input.nextDouble();
-		this.money = amount + money;
-		return money;
+		money = amount + money;
+		
 	}	
 
 	
 	
 	
-	public double punish() {
+	public static void punish() {
 		System.out.println("How much would you like to take: $");
 		double take = input.nextDouble();
 		if(take<=money) {
 			System.out.println("Your child doesn't have enought for you to take that amount, please enter an amount equals to or less than what they currently have"+ money);
 		}
 		else {
-			this.money = take -money;
+			money = take -money;
 		}
-		return money;
 	}
 	
 	
 	
 	
 	
-	public double checkBalance() {
-		return money;
+	public static void checkBalance() {
+		System.out.println(money);
 	}
 
 }//end Allowance class

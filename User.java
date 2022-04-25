@@ -9,7 +9,7 @@ public class User implements Serializable {
 	private static final long serialVersionUID = 5594123735977410396L;
 	protected String username;
 	protected String password;
-	static Parent parent = new Parent();
+	static ArrayList<String> parent = new ArrayList<String>();
 	static ArrayList<String> kid = new ArrayList<String>();
 	static ArrayList<String> users = new ArrayList<String>();
 	static Scanner input = new Scanner(System.in);
@@ -48,9 +48,10 @@ public static void main(String [] args) {
 	if(users== null) {
 		users = new ArrayList <String>();
 	}
-	
+	boolean ahead = true;
+	while(ahead) {
 	directory();
-	
+	}
 	try {
 		FileOutputStream fileOut = new FileOutputStream("Users.txt");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -77,10 +78,10 @@ public static void main(String [] args) {
 				boolean enter = true;
 				while(enter){
 				System.out.println("Enter your username");
-				String usrnm = input.nextLine();
+				String username = input.nextLine();
 				System.out.println("Enter your password");
-				String psswd = input.nextLine();
-				if(users.contains(usrnm)&&users.contains(psswd)) {
+				String password = input.nextLine();
+				if(users.contains(username)&&users.contains(password)) {
 					System.out.println("Log in Succcessful!\nWho are you?\n"
 							+"1.) Parents Log-in\n"
 							+"2). Kids ");
@@ -90,13 +91,18 @@ public static void main(String [] args) {
 						String digit = input.nextLine();
 						if(users.contains(digit)) {
 							System.out.println("Succesfully Logged you in!");
-							parent.play();
+							Parent.play();
+							enter = false;
+							
 						}
 						else {
 							System.out.println("Incorrect input, please try again or make a new account");
 							enter = false;
 						}
 					}
+					else if(who.equals("2")) {
+					Kid.doing();
+					}//end else if
 				}
 				else {
 					System.out.println("Unable to log in. Please try again or create a new account");
@@ -123,16 +129,21 @@ public static void main(String [] args) {
 						System.out.println("Enter a 4-digit pin for your accesss");
 						String digit = input.nextLine();
 						users.add(digit);
-						System.out.println("Enter a 4-digit pin for your children to access their accounts.");
+						/*System.out.println("Enter a 4-digit pin for your children to access their accounts.");
 						String kdigit = input.nextLine();
 						users.add(kdigit);
-						System.out.println("Succesfully created you and your childs account! refresh the page and log in.");
+						System.out.println("Succesfully created you and your childs account! refresh the page and log in.");*/
 						makeacc=false;
 						}//END PPIN	
 					}	
 					
 				}
+			else if(open.equals("4")) {
+				//users.removeAll(users);
+				System.out.println("Username and Password: "+users);
 			}
+				
+	}	
 			/*\else if(open.equals("2")) {
 				boolean newacc = true;
 				while(newacc) {
