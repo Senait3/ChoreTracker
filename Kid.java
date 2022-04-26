@@ -93,9 +93,6 @@ public static void kidDoes() {
 			Message.History();
 		}
 		else if(in.equals("5")) {
-			Task.pTask();
-		}
-		else if(in.equals("6")) {
 			break;
 		}
 	}
