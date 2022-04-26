@@ -20,14 +20,21 @@ only allow reading for older stored messages
 
 public class Message implements Serializable {
   //private static final long serialVersionUID = 1L;
-static Scanner input = new Scanner(System.in);
-  static ArrayList<String> message = new ArrayList<String>();
-  
+	protected String text;
+	static Scanner input = new Scanner(System.in);
+	static ArrayList<String> message = new ArrayList<String>();
+
   //static Message message; 
   
- 
+ public void message() {
+	 ArrayList<String> message = new ArrayList<String>();
+	 this.text = text;
+ }
+  
+  
   
  public static void History() {
+
 	 try {
 			FileInputStream fileIn = new FileInputStream("Messages.txt");
 			ObjectInputStream in = new ObjectInputStream(fileIn);
@@ -39,7 +46,7 @@ static Scanner input = new Scanner(System.in);
 		
 		}//end try	
 		catch(IOException | ClassNotFoundException c) {
-			System.out.println("No recent messages");
+			System.out.println(c.getMessage());
 		}//end catch
 		
 		discussion();
@@ -51,41 +58,51 @@ static Scanner input = new Scanner(System.in);
 			out.close();
 			fileOut.close();
 
-		}catch(Exception e){
+		}catch(IOException e){
 			System.out.println(e.getMessage());
 		}
+	 
  } 
   
   
   
 public static void discussion(){
-	boolean talk = true;
-	while(talk){
+		while(true) {
 		System.out.println("\nWhat would you like to do?\n"+
-                      "1.)View Recent Message\n"+
+                      "1.)View most recent message\n"+
                       "2.)Send a Message\n"+
-                      "3.)View all chat history\n"+
+                      "3.)Delete Message History\n"+
                       "4.)Exit");
 	    String chat = input.nextLine();
 	    if(chat.equals("1")){
-	      System.out.printf("Most recent message\n"+message.get(message.size() - 1));
+	    if(message.isEmpty()) {
+	    		System.out.println("There does not seem to be any messages, please send one before viewing");
+	    	}
+	    else{ //(message.contains(message)) {
+		    System.out.printf("Most recent message: "+message.get(message.size() - 1));
+		    }
+	     
 	    }//end if
 	    else if(chat.equals("2")){
 	      System.out.println(java.time.LocalDate.now() + " Enter a message you would like to send: ");
-	      String speak = input.nextLine();
-	      message.add(speak);
+	      String text = input.nextLine();
+	      message.add(text);
 	    }//end else if
 	    else if(chat.equals("3")){
-	      //System.out.printf("Message history to date: \n");
-	    	  System.out.printf("Message history to date: \n");
-	    		  System.out.print(message);
-	    }//end else if 3
-	    else if(chat.equals("4")){
-	      talk = false;
+	    	message.removeAll(message);
 	    }//end else if quit
+	    else if(chat.equals("4")) {
+	    	System.out.println("Bye-bye");
+	    	break;
+	    }
+	    else if(chat.equals("5")) {
+	    	message.removeAll(message);
+	    	for (int i = 0; i < message.size(); i++)
+	    		System.out.println(message.get(i));
+	    }
 	    else{
 	      System.out.println("Invalid input");
-	      talk = false;
+	      //break;
 	    }//end else 
 	  }//end while loop
 	}

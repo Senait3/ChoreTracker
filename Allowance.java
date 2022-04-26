@@ -5,12 +5,15 @@ import java.io.Serializable;
 public class Allowance implements Serializable{
 protected static  double money;
 protected static double amount;
+protected static double take;
 static Scanner input = new Scanner(System.in);
 
 
 
 public Allowance(double money, double Aamount) {
 	this.money = money;
+	this.amount = amount;
+	this.take = take;
 }
 
 
@@ -31,6 +34,10 @@ public Allowance() {
 }
 
 */ 
+
+
+
+
 
 	public static void quantity() {
 		System.out.println("How much would you like to give for allowance today: $");

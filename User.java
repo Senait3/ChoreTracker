@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 
 public class User implements Serializable {
-	private static final long serialVersionUID = 5594123735977410396L;
+	//private static final long serialVersionUID = 5594123735977410396L;
 	protected String username;
 	protected String password;
 	static ArrayList<String> parent = new ArrayList<String>();
@@ -43,15 +43,14 @@ public static void main(String [] args) {
 	
 	}//end try	
 	catch(IOException | ClassNotFoundException c) {
-		System.out.println("User does not exist, check your input and try again or make a new account.");
+		System.out.println(c.getMessage());
 	}//end catch
-	if(users== null) {
+	/*if(users== null) {
 		users = new ArrayList <String>();
-	}
-	boolean ahead = true;
-	while(ahead) {
-	directory();
-	}
+	}*/
+	
+	enter();
+	
 	try {
 		FileOutputStream fileOut = new FileOutputStream("Users.txt");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -68,15 +67,41 @@ public static void main(String [] args) {
 	
 
 
-	public static void directory() {
+	public static void enter() {
+		while(true) {
 		System.out.println("Please make a selection\n"
+				+"1.)Log in\n"
+				+"2.)New User sign up\n"
+				+"3.)Quit\n");
+		String open = input.nextLine();
+		if(open.equals("1")) {
+			login();
+		}
+		else if(open.equals("2")) {
+			register();
+		}
+		else if(open.equals("3")) {
+			break;
+		}
+		else if(open.equals("4")) {
+			users.removeAll(users);
+			//System.out.println("Username and Password: "+(users));
+		}
+	}
+}
+
+
+
+	public static void login() {
+		
+		/*System.out.println("Please make a selection\n"
 					+"1.)Log in\n"
 					+"2.)New User sign up\n"
 					+"3.)Quit\n");
 			String open = input.nextLine();
-			if(open.equals("1")) {
+			if(open.equals("1")) {*/
 				boolean enter = true;
-				while(enter){
+				while(enter){ 
 				System.out.println("Enter your username");
 				String username = input.nextLine();
 				System.out.println("Enter your password");
@@ -87,11 +112,12 @@ public static void main(String [] args) {
 							+"2). Kids ");
 					String who = input.nextLine();
 					if(who.equals("1")) {
-						System.out.println("Please enter your 4 digit pin: ");
+						System.out.println("Please enter your pin: ");
 						String digit = input.nextLine();
 						if(users.contains(digit)) {
 							System.out.println("Succesfully Logged you in!");
-							Parent.play();
+							//Message.History();
+							Parent.mom();
 							enter = false;
 							
 						}
@@ -109,11 +135,14 @@ public static void main(String [] args) {
 					enter = false;
 				}
 			}
-			}	
-			else if(open.equals("2")) {
-				boolean makeacc =true;
-				while(makeacc) {
-					System.out.println("Hello, Please fill out the inforation below.\n");
+		}	
+	
+			//else if(open.equals("2")) {
+				//boolean makeacc =true;
+				//while(makeacc) {
+					
+		public static void register() {
+			System.out.println("Hello, Please fill out the inforation below.\n");
 					System.out.println("Enter a Username: \n");
 					String username = input.nextLine();
 					System.out.println("Enter a Password: \n");
@@ -126,24 +155,28 @@ public static void main(String [] args) {
 						System.out.println("Successfully created your account!\n");
 						users.add(username);
 						users.add(password);
-						System.out.println("Enter a 4-digit pin for your accesss");
+						System.out.println("Enter a  pin for your accesss");
 						String digit = input.nextLine();
 						users.add(digit);
 						/*System.out.println("Enter a 4-digit pin for your children to access their accounts.");
 						String kdigit = input.nextLine();
 						users.add(kdigit);
 						System.out.println("Succesfully created you and your childs account! refresh the page and log in.");*/
-						makeacc=false;
+						
 						}//END PPIN	
-					}	
+					//}	
 					
 				}
+			/*else if(open.equals("3")) {
+				//break;
+			}
 			else if(open.equals("4")) {
-				//users.removeAll(users);
-				System.out.println("Username and Password: "+users);
+				users.removeAll(users);
+				//System.out.println("Username and Password: "+(users));
 			}
 				
-	}	
+			}*/
+	}		
 			/*\else if(open.equals("2")) {
 				boolean newacc = true;
 				while(newacc) {
@@ -160,7 +193,7 @@ public static void main(String [] args) {
 			}
 		}
 	}*/
-}//end starting function
+//}//end starting function
 
 
 
