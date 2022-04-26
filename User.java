@@ -128,6 +128,7 @@ public static void main(String [] args) {
 					}
 					else if(who.equals("2")) {
 					Kid.Kmenu();
+					enter = false;
 					}//end else if
 				}
 				else {

@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class Allowance implements Serializable{
 protected static  double money;
-protected static double amount;
-protected static double take;
+//protected static double amount;
+//protected static double take;
 static Scanner input = new Scanner(System.in);
 
 
 
-public Allowance(double money, double Aamount) {
+public Allowance(double money) {
 	this.money = money;
-	this.amount = amount;
-	this.take = take;
+	//this.amount = amount;
+	//this.take = take;
 }
 
 
@@ -36,9 +36,10 @@ public Allowance() {
 */ 
 
 	public static void quantity() {
-		System.out.println("How much would you like to give for allowance today: $");
+		System.out.println("How much would you like to give for allowance today:$ ");
 		double amount =input.nextDouble();
 		money = amount + money;
+		System.out.println("You gave: "+money);
 		
 	}	
 

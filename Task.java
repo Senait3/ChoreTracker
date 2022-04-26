@@ -93,6 +93,7 @@ public static void complete() {
 	String sure = input.nextLine();
 	if(sure.equals("y")||sure.equals("Y")) {
 		complete.add(fini);
+		task.remove(fini);
 		System.out.print("Succesfully marked complete\n");
 	}
 	else if(complete.isEmpty()) {

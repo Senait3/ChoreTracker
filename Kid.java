@@ -50,7 +50,7 @@ public static void kidDoes() {
 		users = new ArrayList <String>();
 	}*/
 	
-	addnew();	
+		
 	Kmenu();
 	try {
 		FileOutputStream fileOut = new FileOutputStream("kid.txt");
@@ -85,26 +85,33 @@ public static void kidDoes() {
 			Task.complete();
 		}
 		else if(in.equals("3")) {
-			Allowance.checkBalance();
+			seekidMoney();
 		}
 		else if(in.equals("4")) {
 			Message.History();
 		}
 		else if(in.equals("5")) {
+			Task.pTask();
+		}
+		else if(in.equals("6")) {
 			break;
 		}
 	}
 }
 
 
+public static void seekidMoney() {
+	Allowance.checkBalance();
+}	
+	
 public static void mon() {
-	for(int i = 0; i < Kid.kid.size(); i++) {
-	      System.out.print(Kid.kid.get(i));
+	for(int i = 0; i < kid.size(); i++) {
+	      System.out.print(kid.get(i));
 	      System.out.print(" \n");
 	    }
 	System.out.println("which child did you want to give an allowance: ");
 	String kmoney = input.nextLine();
-	if(Kid.kid.contains(kmoney)) {
+	if(kid.contains(kmoney)) {
 		quantity();
 	}
 	else {
@@ -114,7 +121,7 @@ public static void mon() {
 
 
 
-public static void addnew() {
+/*public static void addnew() {
 	System.out.println("Enter the name of the child you wish to add: ");
 	String name = input.nextLine();
 	if(kid.contains(name)) {
@@ -122,10 +129,10 @@ public static void addnew() {
 				+"If not then try adding a different child");
 	}
 	else {
-		System.out.printf("Succesfully added: "+name+"\n");
-		kid.add(name);
+		System.out.printf("Succesfully added: " +ame+"\n");
+		parent.add(name);
 	}
-}
+}*/
 
 
 
@@ -136,38 +143,16 @@ public static void seeMoney() {
 
 
 public static void kidDone() {
-	Task.complete();
+	Task.assigned();
 }
 
 
 
-	public static void doing() {
-		System.out.println(parents);
-		System.out.println("To get started type in your name: ");
-		String kName = input.nextLine();
-		if(task.contains(kName)) {
-			boolean kiddoes = true;
-			while(kiddoes) {
-			System.out.println("HI");
-			String hi = input.nextLine();
-			if(hi.equals("1")){
-				Task.pTask();
-			}
-			else if(hi.equals("2")) {
-				Allowance.checkBalance();
-					}
-			else if(hi.equals("3")) {
-				System.out.println(kid);
-			}
-		}
-	}
-		else {
-			System.out.println("You don't seem to be registered, try having a parent add you so you can get started.");
-		}
+	
 }
 //public 
 
 
 
 
-}//end Kid entire class
+//}//end Kid entire class

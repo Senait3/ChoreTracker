@@ -127,19 +127,30 @@ public static void getStarted() {
 
 
 public static void newKid() {
-	Kid.addnew();
+		System.out.println("Enter the name of the child you wish to add: ");
+		String name = input.nextLine();
+		if(parents.contains(name)) {
+		System.out.printf("It seems like you've already added that child before\n"+"If thats the case then you can start assigning them tasks\n"
+					+"If not then try adding a different child");
+		}
+		else {
+			System.out.printf("Succesfully added: "+name+"\n");
+			parents.add(name);
+		}
+	
+
 }
 
 
 public static void newChore() {
 	
-	for(int i = 0; i < Kid.kid.size(); i++) {
-	      System.out.print(Kid.kid.get(i));
+	for(int i = 0; i < parents.size(); i++) {
+	      System.out.print(parents.get(i));
 	      System.out.print(" \n");
 	    }
 	System.out.println("which child did you want to assign a task to: ");
 	String bore = input.nextLine();
-	if(Kid.kid.contains(bore)) {
+	if(parents.contains(bore)) {
 		Task.addT();
 	}
 	else {
