@@ -64,8 +64,8 @@ public Allowance() {
 	
 	
 	
-	public static void checkBalance() {
-		System.out.println(money);
+	public static double checkBalance() {
+		return money;
 	}
 
 }//end Allowance class

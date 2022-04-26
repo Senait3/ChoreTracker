@@ -15,22 +15,21 @@ public class Task  implements Serializable {
 	static Scanner input = new Scanner(System.in);
 	static String chore;
 	static ArrayList<String> task = new ArrayList <String>();
-	static String complete ;
+	static ArrayList<String> complete = new ArrayList<String>();
 	
 
 	
-	public Task(String chore, String complete) {
+	public Task(String chore) {
+		ArrayList<String> complete = new ArrayList<String>();
 		ArrayList<String> task = new ArrayList <String>();
 		this.chore = chore; 
-		this.complete = "incomplete";
-
 	}
 	
 	
 
 public static void work() {	
 	try {
-		FileInputStream fileIn = new FileInputStream("Tasks.txt");
+		FileInputStream fileIn = new FileInputStream("task.txt");
 		ObjectInputStream in = new ObjectInputStream(fileIn);
 		task = (ArrayList<String>) in.readObject();
 		in.close();
@@ -42,14 +41,14 @@ public static void work() {
 	catch(IOException | ClassNotFoundException c) {
 		System.out.println(c.getMessage());
 	}//end catch
-	
-	if(task== null) {
-		task = new ArrayList <String>();
-		System.out.print("No tasks currently assigned");
-	}
+	/*if(users== null) {
+		users = new ArrayList <String>();
+	}*/
 	addT();
+	complete();
+	
 	try {
-		FileOutputStream fileOut = new FileOutputStream("Tasks.txt");
+		FileOutputStream fileOut = new FileOutputStream("task.txt");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
 		out.writeObject(task);
 		out.close();
@@ -57,7 +56,7 @@ public static void work() {
 
 	}catch(Exception e){
 		System.out.println(e.getMessage());
-	}
+		}
 }
 	
 	
@@ -79,28 +78,33 @@ public static void addT() {
 }	
 	
 	
-	
-
-public static void pTask() {
-	//add a task
-	System.out.println("Tasks Status: "+task);
-		
+public static void complete() {
+	for(int i = 0; i < task.size(); i++) {
+	      System.out.print(task.get(i));
+	      System.out.print(" \n");}
+	System.out.println("What task do you want to mark as complete: ");
+	String fini = input.nextLine();
+	System.out.println("Are you sure you want to mark that task as complete?(y/n)");
+	String sure = input.nextLine();
+	if(sure.equals("y")||sure.equals("Y")) {
+		complete.add(fini);
+		System.out.print("Succesfully marked complete\n");
+	}
+	else if(complete.isEmpty()) {
+		System.out.println("Okay come back later, and complete your tasks");
 	}
 }
 
-
-/*public static void due() {
-	System.out.println("All of your assigned tasks: " + (task));
-	
+public static void pTask() {
+	//add a task
+	if(complete.isEmpty()) {
+		System.out.println("There aren't any completed tasks currently");
+	}
+	System.out.println("Tasks Status: "+complete);
+		
 }
 
-public static void KTask() {
-	
-	System.out.println("Which task did you want to do: ");
-}
 
-public static void viewDone() {
-	System.out.println("All the completed tasks: "+task.equals("Completed"));
+
 }
-*/
 

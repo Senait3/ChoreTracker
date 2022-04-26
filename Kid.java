@@ -11,7 +11,7 @@ public class Kid extends Allowance implements Serializable {
 	static Scanner input = new Scanner(System.in);
 	protected String name;
 	protected Allowance allowance;
-	static ArrayList<String> task = new ArrayList
+	static ArrayList<String> task = new ArrayList<String>();
 	static ArrayList<String> parents = new ArrayList<String>();
 	//protected Task task; 
 	
@@ -24,7 +24,7 @@ public Kid(String name, int age) {
 	ArrayList<String> kid = new ArrayList<String>();
 	ArrayList<String> parents = new ArrayList <String>();
 	this.allowance = new Allowance();
-	ArrayList<String> task;
+	ArrayList<String> task = new ArrayList<String>();
 	message = new ArrayList<String>();
 
 	
@@ -33,32 +33,95 @@ public Kid(String name, int age) {
 
 
 public static void kidDoes() {
-	 try {
-			FileInputStream fileIn = new FileInputStream("Parent.txt");
-			ObjectInputStream in = new ObjectInputStream(fileIn);
-			kid = (ArrayList<String>) in.readObject();
-			in.close();
-			fileIn.close();
-		 
-			
+	try {
+		FileInputStream fileIn = new FileInputStream("kid.txt");
+		ObjectInputStream in = new ObjectInputStream(fileIn);
+		kid = (ArrayList<String>) in.readObject();
+		in.close();
+		fileIn.close();
+	 
 		
-		}//end try	
-		catch(IOException | ClassNotFoundException c) {
-			System.out.println(c.getMessage());
-		}//end catch
-		
-		doing();
-		
-		try {
-			FileOutputStream fileOut = new FileOutputStream("Parent.txt");
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			out.writeObject(kid);
-			out.close();
-			fileOut.close();
+	
+	}//end try	
+	catch(IOException | ClassNotFoundException c) {
+		System.out.println(c.getMessage());
+	}//end catch
+	/*if(users== null) {
+		users = new ArrayList <String>();
+	}*/
+	
+	addnew();	
+	Kmenu();
+	try {
+		FileOutputStream fileOut = new FileOutputStream("kid.txt");
+		ObjectOutputStream out = new ObjectOutputStream(fileOut);
+		out.writeObject(kid);
+		out.close();
+		fileOut.close();
 
-		}catch(Exception e){
-			System.out.println(e.getMessage());
+	}catch(Exception e){
+		System.out.println(e.getMessage());
 		}
+}
+
+
+
+
+
+	public static void Kmenu() {
+		while(true) {
+		System.out.println( "+----------------------+\n"+
+							"| 1.) View Tasks       |\n"+
+							"| 2.) Complete Tasks   |\n"+
+							"| 3.) View allowance   |\n"+
+							"| 4.) Go to Messaging  |\n"+
+							"| 5.) Quit             |\n"+
+							"+----------------------+");
+		String in = input.nextLine();
+		if(in.equals("1")) {
+			kidDone();
+		}
+		else if(in.equals("2")) {
+			Task.complete();
+		}
+		else if(in.equals("3")) {
+			
+		}
+		else if(in.equals("4")) {
+			Message.History();
+		}
+		else if(in.equals("5")) {
+			break;
+		}
+	}
+}
+
+
+
+
+
+
+public static void addnew() {
+	System.out.println("Enter the name of the child you wish to add: ");
+	String name = input.nextLine();
+	if(kid.contains(name)) {
+	System.out.printf("It seems like you've already added that child before\n"+"If thats the case then you can start assigning them tasks\n"
+				+"If not then try adding a different child");
+	}
+	else {
+		System.out.printf("Succesfully added: "+name+"\n");
+		kid.add(name);
+	}
+}
+
+
+
+
+
+
+
+public static void kidDone() {
+	Task.complete();
 }
 
 

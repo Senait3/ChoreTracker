@@ -13,7 +13,7 @@ public class Parent extends Allowance implements Serializable{
 	Allowance allowance;
 	//static ArrayList<String> task = new ArrayList<String>();
 	//protected Kid kid;
-	static ArrayList<String> kid = new ArrayList <String>();
+	static ArrayList<String> kids = new ArrayList <String>();
 	static ArrayList<String> parents = new ArrayList<String>();
 	static ArrayList<String> message = new ArrayList<String>();
 
@@ -24,44 +24,13 @@ public Parent(String childName) {
 	ArrayList<String> parents = new ArrayList <String>();
 	this.allowance = new Allowance();
 	//task = new ArrayList<String>();
-	ArrayList<String> kid = new ArrayList<String>();
+	ArrayList<String> kids = new ArrayList<String>();
 	message = new ArrayList<String>();
 	}//end 
 
 
 
 
-
-
-
-/*public static void mom(){
-	try {
-		FileInputStream fileIn = new FileInputStream("Parent.txt");
-		ObjectInputStream in = new ObjectInputStream(fileIn);
-		parent = (ArrayList<String>) in.readObject();
-		in.close();
-		fileIn.close();
-	 
-		
-	
-	}//end try	
-	catch(IOException | ClassNotFoundException c) {
-		System.out.println(c.getMessage());
-	}//end catch
-	
-	play();
-	
-	try {
-		FileOutputStream fileOut = new FileOutputStream("Parent.txt");
-		ObjectOutputStream out = new ObjectOutputStream(fileOut);
-		out.writeObject(parent);
-		out.close();
-		fileOut.close();
-
-	}catch(Exception e){
-		System.out.println(e.getMessage());
-	}
-}*/
 
 
 
@@ -136,19 +105,19 @@ public static void getStarted() {
 			newChore();
 		}
 		else if(in.equals("3")) {
-			break;
+			Task.pTask();
 		}
 		else if(in.equals("4")) {
 			give();
 		}
 		else if(in.equals("6")){
-			System.out.println("hi");
+			Message.History();
 		}
 		else if (in.equals("7")) {
 			break;
 		}
 		else if(in.equals("8")) {
-			kid.removeAll(kid);
+			parents.removeAll(parents);
 			parents.removeAll(message);
 		}
 }
@@ -159,28 +128,19 @@ public static void getStarted() {
 
 
 public static void newKid() {
-	System.out.println("Enter the name of the child you wish to add: ");
-	String name = input.nextLine();
-	if(kid.contains(name)) {
-	System.out.printf("It seems like you've already added that child before\n"+"If thats the case then you can start assigning them tasks\n"
-				+"If not then try adding a different child");
-	}
-	else {
-		System.out.printf("Succesfully added: "+name+"\n");
-		kid.add(name);
-		
-	}//end else
+	Kid.addnew();
 }
 
 
 public static void newChore() {
-	for(int i = 0; i < kid.size(); i++) {
-	      System.out.print(kid.get(i));
+	
+	for(int i = 0; i < Kid.kid.size(); i++) {
+	      System.out.print(Kid.kid.get(i));
 	      System.out.print(" \n");
 	    }
 	System.out.println("which child did you want to assign a task to: ");
 	String bore = input.nextLine();
-	if(kid.contains(bore)) {
+	if(Kid.kid.contains(bore)) {
 		Task.addT();
 	}
 	else {
@@ -191,8 +151,8 @@ public static void newChore() {
 
 public static void give() {
 	System.out.println("which child did you want to give an allowance: ");
-	for(int i = 0; i < parents.size(); i++) {
-	      System.out.print(kid.get(i));
+	for(int i = 0; i < Kid.kid.size(); i++) {
+	      System.out.print(Kid.kid.get(i));
 	      System.out.print(" \n");}
 	Allowance.quantity();
 }

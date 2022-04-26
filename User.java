@@ -127,7 +127,7 @@ public static void main(String [] args) {
 						}
 					}
 					else if(who.equals("2")) {
-					Kid.doing();
+					Kid.Kmenu();
 					}//end else if
 				}
 				else {
