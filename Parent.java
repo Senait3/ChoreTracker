@@ -10,7 +10,6 @@ public class Parent extends Allowance implements Serializable{
 //String FamilyName;
 	static Scanner input = new Scanner(System.in);
 	static String childName = "";
-	Allowance allowance;
 	//static ArrayList<String> task = new ArrayList<String>();
 	//protected Kid kid;
 	static ArrayList<String> kids = new ArrayList <String>();
@@ -22,7 +21,7 @@ public class Parent extends Allowance implements Serializable{
 public Parent(String childName) {
 	this.childName = childName;
 	ArrayList<String> parents = new ArrayList <String>();
-	this.allowance = new Allowance();
+	
 	//task = new ArrayList<String>();
 	ArrayList<String> kids = new ArrayList<String>();
 	message = new ArrayList<String>();
@@ -66,7 +65,7 @@ public static void mom() {
 	}*/
 	
 	getStarted();
-	
+
 	try {
 		FileOutputStream fileOut = new FileOutputStream("Parent.txt");
 		ObjectOutputStream out = new ObjectOutputStream(fileOut);
@@ -93,9 +92,8 @@ public static void getStarted() {
 				+"|2.) Give Tasks               |\n"
 				+"|3.) View task status         |\n"
 				+"|4.) Give Allowance           |\n"
-				+"|5.) Take allowance           |\n"
-				+"|6.) Go to messaging          |\n"
-				+"|7.) Quit                     |\n"
+				+"|5.) Go to messaging          |\n"
+				+"|6.) Quit                     |\n"
 				+"+-----------------------------+");
 		String in = input.nextLine();
 		if(in.equals("1")) {
@@ -110,10 +108,11 @@ public static void getStarted() {
 		else if(in.equals("4")) {
 			give();
 		}
-		else if(in.equals("6")){
+		
+		else if(in.equals("5")){
 			Message.History();
 		}
-		else if (in.equals("7")) {
+		else if (in.equals("6")) {
 			break;
 		}
 		else if(in.equals("8")) {
@@ -149,18 +148,15 @@ public static void newChore() {
 }
 
 
+
+
 public static void give() {
-	System.out.println("which child did you want to give an allowance: ");
-	for(int i = 0; i < Kid.kid.size(); i++) {
-	      System.out.print(Kid.kid.get(i));
-	      System.out.print(" \n");}
-	Allowance.quantity();
+	//System.out.println("which child did you want to give an allowance: ");
+	Kid.mon();
 }
 
 
-public static void choreDone() {
-	
-}
+
 //add task
 //add child
 //view status

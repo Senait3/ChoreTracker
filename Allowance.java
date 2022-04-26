@@ -35,10 +35,6 @@ public Allowance() {
 
 */ 
 
-
-
-
-
 	public static void quantity() {
 		System.out.println("How much would you like to give for allowance today: $");
 		double amount =input.nextDouble();
@@ -46,26 +42,11 @@ public Allowance() {
 		
 	}	
 
+
 	
-	
-	
-	public static void punish() {
-		System.out.println("How much would you like to take: $");
-		double take = input.nextDouble();
-		if(take<=money) {
-			System.out.println("Your child doesn't have enought for you to take that amount, please enter an amount equals to or less than what they currently have"+ money);
-		}
-		else {
-			money = take -money;
-		}
-	}
-	
-	
-	
-	
-	
-	public static double checkBalance() {
-		return money;
+	public static void checkBalance() {
+		System.out.println("Current balance is: $"+ money);
+		
 	}
 
 }//end Allowance class

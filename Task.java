@@ -58,15 +58,20 @@ public static void work() {
 		System.out.println(e.getMessage());
 		}
 }
-	
+
+
+public static void assigned() {
+	System.out.println("Here are all the assigned tasks");
+	for(int i = 0; i < task.size(); i++) {
+	      System.out.print(task.get(i));
+	      System.out.print(" \n");
+	    }
+}
 	
 	
 public static void addT() {
-	System.out.println("which child did you want to give an allowance: ");
-	String ktname = input.nextLine();
 	System.out.println("What is the name of the task: ");
 	String chore = input.nextLine();
-	task.add(ktname);
 	task.add(chore);
 	if(task.isEmpty()) {
 		task.add(chore);

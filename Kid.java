@@ -85,7 +85,7 @@ public static void kidDoes() {
 			Task.complete();
 		}
 		else if(in.equals("3")) {
-			
+			Allowance.checkBalance();
 		}
 		else if(in.equals("4")) {
 			Message.History();
@@ -97,7 +97,20 @@ public static void kidDoes() {
 }
 
 
-
+public static void mon() {
+	for(int i = 0; i < Kid.kid.size(); i++) {
+	      System.out.print(Kid.kid.get(i));
+	      System.out.print(" \n");
+	    }
+	System.out.println("which child did you want to give an allowance: ");
+	String kmoney = input.nextLine();
+	if(Kid.kid.contains(kmoney)) {
+		quantity();
+	}
+	else {
+		System.out.println("Cant find that child try again");
+	}
+}
 
 
 
@@ -117,7 +130,9 @@ public static void addnew() {
 
 
 
-
+public static void seeMoney() {
+	checkBalance();
+}
 
 
 public static void kidDone() {
