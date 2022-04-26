@@ -2,7 +2,7 @@ import java.util.*;
 import java.io.Serializable;
 
 
-public class Allowance implements Serializable{
+public abstract class Allowance implements Serializable{
 protected static  double money;
 //protected static double amount;
 //protected static double take;

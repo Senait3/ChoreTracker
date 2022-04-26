@@ -23,14 +23,16 @@ public Kid(String name, int age) {
 	this.name = name;
 	ArrayList<String> kid = new ArrayList<String>();
 	ArrayList<String> parents = new ArrayList <String>();
-	this.allowance = new Allowance();
+	//this.allowance = new Allowance();
 	ArrayList<String> task = new ArrayList<String>();
 	message = new ArrayList<String>();
 
 	
 }//end 
 
-
+public Kid() {
+	super(money);
+}
 
 public static void kidDoes() {
 	try {

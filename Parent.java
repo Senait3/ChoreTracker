@@ -163,7 +163,7 @@ public static void newChore() {
 
 public static void give() {
 	//System.out.println("which child did you want to give an allowance: ");
-	Kid.mon();
+	quantity();
 }
 
 
