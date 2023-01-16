@@ -11,4 +11,5 @@
   
   #Program
   
-  This program is written entirely in java and utilizes arraylists to store user information like username, password, parental pin number 
+  This program is written entirely in java and utilizes arraylists to store user information like username, password, parental pin number,etc.
+  The users information is saved via file serialization and the same method is used for the messaging functionality.When the user sends a message it gets written into the file and when they want to read a message the program displays the most recent options for the user to see, if at any point the user wants to delet any information they can erase all saved information using the menu within the program.
