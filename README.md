@@ -9,7 +9,6 @@
 # Child Use
   The child account has the option to view assigned tasks, mark their completion status, view allowance, and send messages to the parental account. When marking the completion of a task the child will be asked to verify their choice. If they wanted to mark the wrong task on accident there is still that safety net where they can just go back and none of the tasks will be changed. When they do finish a task and want to mark it as so it will not appear in their list of assigned tasks anymore it will just be gone and will be marked correctly for the parental side. Children have the same messaging acessabilities as the parents and same functionalities. 
   
-  #Program
+  # Program
   
-  This program is written entirely in java and utilizes arraylists to store user information like username, password, parental pin number,etc.
-  The users information is saved via file serialization and the same method is used for the messaging functionality.When the user sends a message it gets written into the file and when they want to read a message the program displays the most recent options for the user to see, if at any point the user wants to delet any information they can erase all saved information using the menu within the program.
+  This program is written entirely in java and utilizes arraylists to store user information like username, password, parental pin number,etc.The users information is saved via file serialization and the same method is used for the messaging functionality.When the user sends a message it gets written into the file and when they want to read a message the program displays the most recent options for the user to see, if at any point the user wants to delet any information they can erase all saved information using the menu within the program.
